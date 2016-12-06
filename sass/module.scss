@@ -1,0 +1,104 @@
+@import 'reset';
+@import '../bower_components/bourbon/_bourbon.scss';
+@import '../bower_components/susy/sass/susy';
+@import '_map.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body{
+	background: #f0f0f0;
+}
+.clear{
+	clear: both;}
+.clearfix:before,.clearfix:after{
+	content: ""		;
+	display: table;}
+.clearfix:after{
+	clear: both;}
+.clearfix{
+	zoom: 1 /* ie 6/7 */;}
+
+@include keyframes(square) {
+	0% {
+		transform: translateY(0);
+	}
+
+	
+	100% {
+		transform: translateY(-700px) rotate(600deg);
+	}
+}
+$class-slug: for !default;
+@for $i from 1 through 4{
+	.#{$class-slug}-#{$i}{
+		width: 80px + $i;}}
+
+$susy: (
+	columns: 6, 
+	gutters: 1/3,
+	float: ltr,
+	output: float,
+	math: fluid,
+	golbal-box-sizing: border-box,
+	gutter-position: after,  
+	debug: (image: show)
+	);
+
+$desktop: 12 (60px 40px) split;
+$pad: 6 (60px 40px) split;
+$w_desktop: 12 split;
+$w_pad: 6 split;
+$breakpoint_desktop: 890px;
+$breakpoint_pad: 600px 889px;
+
+
+
+header{
+	width: 100%;
+	height: 80px;
+	background: red;}
+footer{
+	width: 100%;
+	height: 250px;
+	background: #222;}
+.wrapper{
+	@include container;
+	height: 1200px;
+	background-color: blue;
+	.haha{
+		@include span(4);
+		background: #fff;
+		margin-bottom: 20px;
+	}
+	@include susy-breakpoint($breakpoint_pad, $pad) {
+		@include container;
+		background-color: gray;
+		.haha{
+			@include span(3);
+			margin-top: 50px;
+			background: #872910;
+			color: #FFF;
+			padding: 20px;
+			font-size: 16px;
+			line-height: 1.2;
+			@include transition(all 0.3s ease-in-out);}
+		}
+	@include susy-breakpoint($breakpoint_desktop, $desktop) {
+		@include container;
+		background-color: pink;
+		height: 1200px;
+		.haha{
+			@include span(3);
+			margin-top: 50px;
+			background: #ac8766;
+			color: #FFF;
+			padding: 20px;
+			font-size: 14px;
+			line-height: 1.2;
+			@include transition(all 0.3s ease-in-out);
+			&:hover{
+				@include transform(scale(1.1));}}}}

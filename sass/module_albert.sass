@@ -1,0 +1,108 @@
+@import reset
+@import ../bower_components/bourbon/_bourbon.scss
+// @import ../bower_components/neat/_neat.scss
+@import ../bower_components/susy/sass/susy
+@import _map.scss
+
+
+
+
+body
+	background: #f0f0f02
+
+
+.clear
+	clear: both
+
+.clearfix:before,.clearfix:after
+	content: ""		
+	display: table
+.clearfix:after
+	clear: both
+.clearfix
+	zoom: 1 /* ie 6/7 */
+
+
+
+
++keyframes(square) 
+	0%
+		transform: translateY(0)
+	100%
+		transform: translateY(-700px) rotate(600deg)
+
+$class-slug: for !default
+@for $i from 1 through 4
+	.#{$class-slug}-#{$i}
+		width: 60px + $i
+
+
+
+// shorthand
+$desktop: 12 (60px 40px) split
+$pad: 6 (60px 40px) split
+
+$w_desktop: 12 split
+$w_pad: 6 split
+
+$breakpoint_desktop: 890px
+$breakpoint_pad: 0 889px
+
+$susy: (debug: (image: hide))
+
+
+
+
+
+header
+	width: 100%
+	height: 80px
+	background: orange
+
+footer
+	width: 100%
+	height: 250px
+	background: #222
+
+.wrapper
+	height: 1200px
+	+susy-breakpoint($breakpoint_pad, $pad)
+		+container
+		.haha
+			+span(6)
+			margin-top: 50px
+			background: #872910
+			color: #FFF
+			padding: 20px
+			font-size: 16px
+			line-height: 1.2
+			+transition(all 0.2s ease-in-out)
+
+
+	+susy-breakpoint($breakpoint_desktop, $desktop)
+		+container
+		height: 1200px
+		// background: #c0c0c0
+
+		.haha
+			+span(3)
+			margin-top: 50px
+			background: #ac8766
+			color: #FFF
+			padding: 20px
+			font-size: 14px
+			line-height: 1.2
+			+transition(all 0.2s ease-in-out)
+			&:hover
+				+transform(scale(1.1))
+			
+
+
+
+
+
+
+
+
+
+
